@@ -8,8 +8,9 @@ A small todo app with a built-in breathing exercise. Vite, React, TypeScript, Ta
 
 - Add, check off and delete todos. Each has a title, an optional due date and a priority (low, medium, high).
 - Overdue dates are flagged on unfinished todos.
+- A small "completed today" counter under the title counts todos checked off since midnight (local time). Unchecking or deleting a todo lowers it.
 - Data persists in the browser under the `todos` key.
-- **Meditation mode** hides the list and opens a full-screen breathing circle: 4 s expanding (breathe in), 6 s contracting (breathe out), repeated for 2 minutes. A countdown shows the time left. Press `Esc` or use the Exit button to leave early.
+- **Meditation mode** hides the list and opens a full-screen breathing circle: 4 s expanding (breathe in), 6 s contracting (breathe out), repeated for the length you pick (2, 5 or 10 minutes; the choice is remembered). A countdown shows the time left. Press `Esc` or use the Exit button to leave early.
 
 ![Meditation mode](docs/meditation.png)
 

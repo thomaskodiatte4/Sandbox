@@ -7,5 +7,7 @@ export interface Todo {
   due?: string
   priority: Priority
   done: boolean
+  /** Epoch ms when last checked off; cleared on uncheck */
+  completedAt?: number
   createdAt: number
 }
