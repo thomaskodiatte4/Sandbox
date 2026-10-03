@@ -42,3 +42,7 @@ src/
 
 - The breathing animation is a CSS transform transition whose duration switches between 4000 ms and 6000 ms. Phase is derived from elapsed time, so it stays in step with the clock rather than accumulating timer drift.
 - Clearing site data removes your todos. There is no export or sync.
+
+## Deploying
+
+Pushes to `main` build and publish the app to GitHub Pages via `.github/workflows/deploy.yml`. One-time setup: repository Settings, Pages, Source set to "GitHub Actions". The site is then at `https://<user>.github.io/<repo>/`.
