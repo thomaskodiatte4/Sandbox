@@ -21,10 +21,10 @@ export function TodoForm({ onAdd }: Props) {
   }
 
   const field =
-    'rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-200'
+    'rounded-lg border border-slate-700/70 bg-slate-950/60 px-3 py-2 text-sm text-slate-100 placeholder:text-slate-500 focus:border-neon-cyan focus:outline-none focus:ring-2 focus:ring-neon-cyan/30'
 
   return (
-    <form onSubmit={submit} className="flex flex-col gap-2 sm:flex-row">
+    <form onSubmit={submit} className="glass flex flex-col gap-2 rounded-2xl p-3 sm:flex-row">
       <input
         value={title}
         onChange={(e) => setTitle(e.target.value)}
@@ -52,7 +52,7 @@ export function TodoForm({ onAdd }: Props) {
       <button
         type="submit"
         disabled={!title.trim()}
-        className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700 disabled:cursor-not-allowed disabled:opacity-40"
+        className="neon-btn rounded-lg px-5 py-2 text-sm disabled:cursor-not-allowed disabled:opacity-40"
       >
         Add
       </button>

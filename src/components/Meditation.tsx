@@ -51,18 +51,18 @@ export function Meditation({ minutes, onExit }: Props) {
     <div
       role="dialog"
       aria-label="Meditation"
-      className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-slate-950 text-slate-100"
+      className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-void text-slate-100"
     >
       <button
         onClick={onExit}
-        className="absolute top-5 right-5 rounded-lg border border-slate-700 px-3 py-1.5 text-sm text-slate-300 hover:bg-slate-800"
+        className="glass absolute top-5 right-5 rounded-lg px-3 py-1.5 text-sm text-slate-300 hover:text-neon-cyan"
       >
         Exit (Esc)
       </button>
 
       <div className="relative flex h-[min(80vmin,32rem)] w-[min(80vmin,32rem)] items-center justify-center">
         <div
-          className="absolute inset-0 rounded-full bg-gradient-to-br from-sky-300 to-indigo-500 shadow-[0_0_80px_rgba(129,140,248,0.5)] ease-in-out"
+          className="absolute inset-0 rounded-full bg-[radial-gradient(circle_at_30%_30%,#67e8f9,#818cf8_55%,#c084fc)] shadow-[0_0_100px_rgb(34_211_238/0.45),inset_0_0_60px_rgb(255_255_255/0.25)] ease-in-out"
           style={{
             transform: `scale(${expanded ? 1 : 0.35})`,
             transitionProperty: 'transform',
@@ -71,15 +71,15 @@ export function Meditation({ minutes, onExit }: Props) {
         />
         <p
           aria-live="polite"
-          className="relative text-2xl font-light tracking-widest text-white drop-shadow"
+          className="relative font-display text-xl tracking-[0.3em] text-white uppercase drop-shadow-[0_0_12px_rgb(0_0_0/0.6)]"
         >
           {finished ? 'Well done' : phase === 'in' ? 'Breathe in' : 'Breathe out'}
         </p>
       </div>
 
-      <p className="absolute bottom-8 text-sm tabular-nums text-slate-400">
+      <p className="absolute bottom-8 font-display text-sm tracking-[0.3em] tabular-nums text-neon-cyan/70">
         {finished ? (
-          <button onClick={onExit} className="rounded-lg bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-500">
+          <button onClick={onExit} className="rounded-lg neon-btn px-4 py-2">
             Back to todos
           </button>
         ) : (

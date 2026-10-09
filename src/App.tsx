@@ -41,26 +41,26 @@ export default function App() {
   const completedToday = todos.filter((t) => t.done && t.completedAt && isToday(t.completedAt)).length
 
   return (
-    <main className="min-h-screen bg-slate-50 px-4 py-10">
+    <main className="app-bg min-h-screen px-4 py-10">
       <div className="mx-auto flex max-w-2xl flex-col gap-6">
         <header className="flex flex-wrap items-end justify-between gap-3">
           <div>
-            <h1 className="text-2xl font-semibold text-slate-900">Todos</h1>
-            <p className="text-sm text-slate-500">
+            <h1 className="neon-text font-display text-3xl font-bold tracking-widest uppercase">Todos</h1>
+            <p className="text-sm text-slate-400">
               {todos.length === 0 ? 'Nothing yet' : `${remaining} of ${todos.length} remaining`}
             </p>
-            <p className="text-xs text-slate-400" data-testid="completed-today">
+            <p className="font-display text-[10px] tracking-[0.2em] text-neon-cyan/70 uppercase" data-testid="completed-today">
               {completedToday} completed today
             </p>
           </div>
           <div className="flex items-center gap-2">
-            <div role="group" aria-label="Meditation length" className="flex overflow-hidden rounded-lg border border-slate-200 bg-white text-sm">
+            <div role="group" aria-label="Meditation length" className="glass flex overflow-hidden rounded-lg text-sm">
               {DURATIONS.map((d) => (
                 <button
                   key={d}
                   onClick={() => setMinutes(d)}
                   aria-pressed={minutes === d}
-                  className={`px-2.5 py-2 ${minutes === d ? 'bg-indigo-600 text-white' : 'text-slate-600 hover:bg-slate-100'}`}
+                  className={`px-2.5 py-2 ${minutes === d ? 'bg-neon-cyan/20 text-neon-cyan shadow-[inset_0_0_12px_rgb(34_211_238/0.25)]' : 'text-slate-400 hover:bg-white/5 hover:text-slate-200'}`}
                 >
                   {d} min
                 </button>
@@ -68,7 +68,7 @@ export default function App() {
             </div>
             <button
               onClick={() => setMeditating(true)}
-              className="rounded-lg border border-indigo-200 bg-indigo-50 px-3 py-2 text-sm font-medium text-indigo-700 hover:bg-indigo-100"
+              className="neon-btn rounded-lg px-3 py-2 text-sm"
             >
               🧘 Meditate
             </button>
@@ -78,7 +78,7 @@ export default function App() {
         <TodoForm onAdd={add} />
 
         {todos.length === 0 ? (
-          <p className="rounded-xl border border-dashed border-slate-300 p-8 text-center text-slate-500">
+          <p className="rounded-xl border border-dashed border-slate-700 p-8 text-center text-slate-500">
             Add your first todo above.
           </p>
         ) : (
