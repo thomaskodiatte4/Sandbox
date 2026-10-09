@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react'
 const INHALE_MS = 4000
 const EXHALE_MS = 6000
 const CYCLE_MS = INHALE_MS + EXHALE_MS
-const TOTAL_MS = 2 * 60 * 1000
 
 type Phase = 'in' | 'out'
 
@@ -12,7 +11,13 @@ function formatTime(ms: number) {
   return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`
 }
 
-export function Meditation({ onExit }: { onExit: () => void }) {
+interface Props {
+  minutes: number
+  onExit: () => void
+}
+
+export function Meditation({ minutes, onExit }: Props) {
+  const totalMs = minutes * 60 * 1000
   const [elapsed, setElapsed] = useState(0)
   // Mount contracted so the first inhale animates instead of starting expanded.
   const [started, setStarted] = useState(false)
@@ -27,10 +32,10 @@ export function Meditation({ onExit }: { onExit: () => void }) {
     const id = setInterval(() => {
       const e = performance.now() - start
       setElapsed(e)
-      if (e >= TOTAL_MS) clearInterval(id)
+      if (e >= totalMs) clearInterval(id)
     }, 200)
     return () => clearInterval(id)
-  }, [])
+  }, [totalMs])
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => e.key === 'Escape' && onExit()
@@ -38,7 +43,7 @@ export function Meditation({ onExit }: { onExit: () => void }) {
     return () => window.removeEventListener('keydown', onKey)
   }, [onExit])
 
-  const finished = elapsed >= TOTAL_MS
+  const finished = elapsed >= totalMs
   const phase: Phase = elapsed % CYCLE_MS < INHALE_MS ? 'in' : 'out'
   const expanded = started && !finished && phase === 'in'
 
@@ -78,7 +83,7 @@ export function Meditation({ onExit }: { onExit: () => void }) {
             Back to todos
           </button>
         ) : (
-          formatTime(TOTAL_MS - elapsed)
+          formatTime(totalMs - elapsed)
         )}
       </p>
     </div>
