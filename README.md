@@ -40,6 +40,7 @@ src/
 
 ## Notes
 
+- Visual style: dark "neon glass" theme (Orbitron headings, Space Grotesk body, cyan/violet/pink accents). Fonts are bundled through `@fontsource`, so the app makes no external requests. Theme colours live in `src/index.css`. Animations respect `prefers-reduced-motion`.
 - The breathing animation is a CSS transform transition whose duration switches between 4000 ms and 6000 ms. Phase is derived from elapsed time, so it stays in step with the clock rather than accumulating timer drift.
 - Clearing site data removes your todos. There is no export or sync.
 
